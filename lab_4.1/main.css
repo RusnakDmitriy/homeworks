@@ -1,0 +1,20 @@
+.main{
+    width: 400px;
+    height: 150px;
+    background: #C1BBBB;
+    box-sizing: border-box;
+}
+
+.main div{
+    float: left;
+    width: 40%;
+    height: 100px;
+    margin: 15px 15px;
+    background: greenyellow;
+    border-radius: 5px 15px;
+    transition: border-radius .3s;
+}
+
+.main .second:hover{
+    border-radius: 5px 30px;
+}
