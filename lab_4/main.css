@@ -1,0 +1,32 @@
+.soc{
+    list-style: none;
+    margin:0;
+}
+.soc li{
+    display:inline-block;
+}
+.soc div{
+    background: url('sprite.jpg') no-repeat;
+    height: 33px;
+    width: 33px;
+}
+
+.soc  div.first{
+    background-position: -84px -40px;
+}
+
+.soc  div.second{
+    background-position: -125px -3px;
+}
+
+.soc div.third{
+    background-position: -84px -3px;
+}
+
+.soc div.forth{
+    background-position: -371px -3px;
+}
+
+.soc div.fifth{
+    background-position: -2px -115px;
+}
