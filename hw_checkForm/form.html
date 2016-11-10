@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Example</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .error {
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <form name="myForm">
+            <div>
+                <label>Name:</label>
+                <input type="text" name="name">
+            </div>
+            <div>
+                <label>Surname:</label>
+                <input type="text" name="surname">
+            </div>
+            <p class="error"></p>
+            <input type="submit" value="Submit">
+        </form>
+        <script>
+            var form = document.forms.myForm;
+            var error = form.getElementsByClassName('error');
+			
+			for(i=0;i<2;i++){
+				createFields(i);
+			}
+			
+			function createFields(i){
+				var newTag = document.createElement('div');
+				var div = form.insertBefore(newTag, form.children[i+2]);
+				if(i == 0)
+					div.innerHTML += '<lable>Password:</labble><input type="password" name="password">';
+				else
+					div.innerHTML += '<lable>Address:</labble><textarea name="address"></textarea>';
+			}			
+
+            form.onsubmit = function(e) {
+                e.preventDefault();
+                error[0].innerHTML = "";
+				
+				for(var i=0; i<form.elements.length; i++){
+					if(form.elements[i].name == 'name' || form.elements[i].name == 'surname'){
+						checkTextInput(i);
+					}
+					if(form.elements[i].name == 'password'){
+						checkPassword(i);
+					}
+					if(form.elements[i].name == 'address'){
+						checkAddress(i);
+					}
+				}
+				
+				function checkTextInput(num){
+					if(form.elements[num].value.length < 2) {
+						error[0].innerHTML += "Your name must contain at least 2 characters</br>";
+					}
+
+					if(form.elements[num].value.length > 20) {
+						error[0].innerHTML += "Your name must contain maximum 20 characters</br>";
+					}
+					return error[0].innerHTML;
+				}
+				
+				function checkPassword(num){
+					if(form.elements[num].value.length < 4) {
+						error[0].innerHTML += "Your password must contain at least 4 characters</br>";
+					}
+					if(form.elements[num].value.length > 10) {
+						error[0].innerHTML += "Your password must contain maximum 10 characters</br>";
+					}
+					return error[0].innerHTML;
+				}
+				
+				function checkAddress(num){
+					if(form.elements[num].value.length > 200) {
+						error[0].innerHTML += "Your addres must contain maximum 200 characters</br>";
+					}
+					return error[0].innerHTML;
+				}
+
+                if (error[0].innerHTML !== "") {
+                    return;
+                }
+
+                this.submit();
+            };
+        </script>
+    </body>
+</html>
