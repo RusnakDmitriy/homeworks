@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bikes</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/main.min.css" rel="stylesheet" type="text/css"/>
+        <link href="css/add.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div class="wrapper">
+            <ul class="menu clearfix">
+                <li><a href="#">Ola! <span>Entrar</span> ou <span>Cadastre-se</span></a></li>
+                <li class="border-flag"><a href="#" class="flag">Minhas Ofertas</a></li>
+                <li><a href="#" class="menu-link">Ajuda</a></li>
+                <li><a href="#" class="menu-link">Contato</a></li>
+                <li><a href="#" class="menu-link">Forum</a></li>
+                <li><a href="#" class="menu-link">Vender</a></li>
+                <li><a href="#" class="menu-link">Meu YouBike</a></li>
+            </ul>
+            
+            <div class="form-wrapper">
+                <h2>Cadastre-se</h2>
+                <div class="form-container">
+                    <div class="align">
+                        <a href="#" class="facebook">Log In with Facebook</a>
+                        <p class="ou">OU</p>
+                        <form name='myForm'>
+                            <input type="text" name="firstname" placeholder="first name">
+                            <input type="text" name="lastname" placeholder="last name">
+                            <input type="email" name="email" placeholder="email">
+                            <input type="password" name="password" placeholder="choose password">
+                            <input type="password" name="passwordconfirm" placeholder="password confirm">
+                            <input type="checkbox" name="youbike" value="youbike">
+                            <label for="checkbox">Send me Youbike updates and tips</label>
+							<p class='error'></p>
+                            <input type="submit" value="Create my Account">
+                        </form>
+                    </div>
+                    <p>By clicking the button above, you agree to the Terms of Service</p>
+                    <p>Xiew our Privacy Policy</p>
+                </div>
+            </div>
+            
+        </div>
+		<script>
+			var form = document.forms.myForm;
+			var error = form.getElementsByClassName('error');
+
+			form.onsubmit = function(e) {
+				e.preventDefault();
+				error[0].innerHTML = "";
+				
+				error[0].innerHTML += validate(form.elements.firstname, 2, 20);
+				error[0].innerHTML += validate(form.elements.lastname, 2, 20);
+				error[0].innerHTML += validate(form.elements.password, 4, 10);
+				error[0].innerHTML += validatePasConf(form.elements.passwordconfirm, form.elements.password);
+				
+				if (error[0].innerHTML !== "") {
+					return;
+				}
+				
+				this.submit();
+			};
+
+			function validate(element, minlength, maxlength) {
+				element.classList.remove("errorLight");
+				if(minlength !== false && element.value.length < minlength) {
+					element.classList.toggle("errorLight");
+					return "Your " + element.name + " must contain at least " + minlength + " characters</br>";
+				}
+				
+				if(maxlength !== false && element.value.length > maxlength) {
+					element.classList.toggle("errorLight");
+					return "Your " + element.name + " must contain maximum " + maxlength + " characters</br>";
+				}
+				
+				return "";
+			}
+			
+			function validatePasConf(elementConf, elementRelative){
+				if(elementConf.value!==elementRelative.value){
+					return "Your password confirmation is not validated!";
+				}
+				return "";
+			}
+		</script>
+    </body>
+</html>

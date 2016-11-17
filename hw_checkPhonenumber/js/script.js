@@ -9,7 +9,7 @@ form.onsubmit = function(e) {
     error[0].innerHTML += validate(form.elements.surname, 2, 20);
     error[0].innerHTML += validate(form.elements.password, 4, 10);
     error[0].innerHTML += validate(form.elements.address, false, 200);
-    error[0].innerHTML += validatePhone(form.elements.phone, /*/\+38\(0\d{2}\)\d{3}-\d{2}-\d{2}/*/ /\+38\(?0\d{2}\)?\d{3}-?\d{2}-?\d{2}/);
+    error[0].innerHTML += validatePhone(form.elements.phone, /*/\+38\(0\d{2}\)\d{3}-\d{2}-\d{2}/*/ /^\+38\(?0\d{2}\)?\d{3}-?\d{2}-?\d{2}$/);
 	
     
     if (error[0].innerHTML !== "") {
@@ -38,7 +38,7 @@ function validate(element, minlength, maxlength) {
 function validatePhone(element, regexp){
 	element.classList.remove("errorLight");
 	if(!regexp.exec(element.value)){
-		lement.classList.toggle("errorLight");
+		element.classList.toggle("errorLight");
 		return "Your " + element.name + " must be only like '+38(0##)###-##-##' or '+380#########'patterns</br>";
 	}
 	return "";
