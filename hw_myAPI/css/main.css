@@ -1,0 +1,46 @@
+#number{
+	background: #AEF776;
+	height: 50px;
+}
+
+.item{
+	width: 100%;
+	height: 400px;
+	margin: 30px 0;
+}
+
+.img{
+	width: 50%;
+	height: 100%;
+	float: left;
+}
+
+.info{
+	width: 50%;
+	height: 100%;
+	float: left;
+}
+
+.like{
+	background: #F7E8E8;
+	width: 100%;
+	height: 33.33%;
+}
+
+.downloads{
+	background: #E8F7ED;
+	width: 100%;
+	height: 33.33%;
+}
+
+.author{
+	background: #F3F7B2;
+	width: 100%;
+	height: 33.33%;
+}
+
+img{
+	display: block;
+	width: 100%;
+	height: 100%;
+}
