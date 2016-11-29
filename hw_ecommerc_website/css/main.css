@@ -258,7 +258,7 @@ body{
 	position: absolute;
 	top: 0;
 	cursor: pointer;
-	background-size: 100%;
+	background-size: 100% 100%;
 }
 
 #smallSlider>.btnSmallSlider:first-child{
@@ -288,6 +288,7 @@ body{
 	height: 100%;
 	border-right: 1px solid #afafaf;
 	box-sizing: border-box;
+	background-size: 100% 100%;
 }
 
 .itemSmallSlider:last-child{
@@ -319,17 +320,17 @@ body{
 
 .itemSmallSlider:first-child>a>div>.imgShopPage{
 	background: url('../img/img1_smallSlider.png') center no-repeat;
-	background-size: 100% auto;
+	/*background-size: 100% auto;*/
 }
 
 .itemSmallSlider:nth-child(2)>a>div>.imgShopPage{
 	background: url('../img/img2_smallSlider.png') center no-repeat;
-	background-size: 100% auto;
+	/*background-size: 100% auto;*/
 }
 
 .itemSmallSlider:nth-child(3)>a>div>.imgShopPage{
 	background: url('../img/img3_smallSlider.png') center no-repeat;
-	background-size: 100% auto;
+	/*background-size: 100% auto;*/
 }
 
 .txtShopPage>h3{
