@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='UTF-8' />
+		<title>calc</title>
+		<link rel='stylesheet' href='reset.css' />
+		<style>
+			#calc{
+				width: 500px;
+				height: 500px;
+			}
+			#calc #res{
+				display: block;
+				padding: 5px 10px;
+				width: 400px;
+				margin: 0 auto;
+			}
+			#calc input[type='button']{
+				width: 15%;
+				margin: 3% 8.5%;
+				height: 10%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id='calc'>
+			<input id='res' value='0' type='text' />
+			<input type='button' value='1' />
+			<input type='button' value='2' />
+			<input type='button' value='3' />
+			<input type='button' value='4' />
+			<input type='button' value='5' />
+			<input type='button' value='6' />
+			<input type='button' value='7' />
+			<input type='button' value='8' />
+			<input type='button' value='9' />
+			<input type='button' value='0' />
+			<input type='button' value='+' />
+			<input type='button' value='-' />
+			<input type='button' value='*' />
+			<input type='button' value='/' />
+			<input type='button' value='=' />
+			<input type='button' value='CE' />
+		</div>	
+		<script>
+		
+			var res = document.getElementById('res'),
+				a=0,
+				elem='';
+				res.value = 0;
+				
+			document.getElementById('calc').addEventListener('click', function(e){
+				var target = e.target;
+				if(target.tagName=='input'){
+					return;
+				}
+				else{
+					calculate(target);
+				}
+			});
+			
+			function calculate(calc){
+				if(+calc.value>=0){
+					if(res.value=='0')
+						res.value=calc.value;
+					else
+						res.value+=calc.value;
+				}else{
+					if(elem==''){
+						a = +res.value;
+						res.value = '';
+					}
+					else{
+						switch(elem){
+							case '+':
+								a += +res.value;
+								res.value = '';
+							break;
+							case '-':
+								a -= +res.value;
+								res.value = '';
+							break;
+							case '*':
+								a =a * +res.value;
+								res.value = '';
+							break;
+							case '/':
+								a =a / +res.value;
+								res.value = '';
+							break;
+						}
+					}
+					elem = calc.value;
+					switch(elem){
+						case '=':
+							if(elem=='+'){
+								a =+a + +res.value;
+							}
+							else if(elem=='-'){
+								a =+a - +res.value;
+							}
+							else if(elem=='*'){
+								a=a * +res.value;
+							}
+							else if(elem=='/'){
+								a=a / +res.value;
+							}
+							res.value = a;
+						break;
+						case 'CE':
+							res.value = '0';
+							a = 0;
+							elem = '';
+						break;
+					}
+				}
+			}
+			
+		</script>
+	</body>
+</html>
